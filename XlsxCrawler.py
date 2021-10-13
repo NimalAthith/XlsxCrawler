@@ -46,8 +46,8 @@ part_name = ws['C']
 for x in range(len(part_name)):
     print(part_name[x].value)
     if openFile(part_name[x].value) is 1:
-        ws['E'+str(x+2)]='No Difference in Windchill and QAD'
-        print ('E'+str(x+2))
+        ws['E'+str(x+1)]='No Difference in Windchill and QAD'
+        print ('E'+str(x+1))
     
 
 wb.save('Result.xlsx')
