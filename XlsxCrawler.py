@@ -15,12 +15,25 @@ def checkXlsx(book):
     row=wss['9']
     value = 0
     for x in row:
+        print(x.value)
         if x.value is None:
             value = 1
-        else:
-            value = 0
-            break
+            
+
+        elif x.value == 'No Values Present in Windchill':
+            value = 2
+            
+
+                        
+        elif x.value == 'Part is not Effective Windchill':
+            value = 3
+            
+
+        else :
+            continue
     
+    
+
     return value
 
 
@@ -47,6 +60,14 @@ for x in range(len(part_name)):
     print(part_name[x].value)
     if openFile(part_name[x].value) is 1:
         ws['E'+str(x+1)]='No Difference in Windchill and QAD'
+        print ('E'+str(x+1))
+
+    if openFile(part_name[x].value) is 2:
+        ws['E'+str(x+1)]='No Values Present in Windchill'
+        print ('E'+str(x+1))
+
+    if openFile(part_name[x].value) is 3:
+        ws['E'+str(x+1)]='Part is not Effective Windchill'
         print ('E'+str(x+1))
     
 
