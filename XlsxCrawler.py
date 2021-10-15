@@ -27,44 +27,44 @@ def checkXlsx(book):
     wbs = load_workbook(filename="./source/" + book)
     wss = wbs.active
     last=9
-    res = set()
-    d=9
+    output_individual_Sheet = set()
+    
     while(1):
         if (wss.cell(row=last, column=1).value == None):
             break
         else:
             last+= 1
     if(last == 9):
-        res.add(0)
-        print(res)
-        return(res) 
+        output_individual_Sheet.add(0)
+        print(output_individual_Sheet)
+        return(output_individual_Sheet) 
     else:
         for i in range(9, last):
 
             if(wss.cell(row=i, column=1).value=='No Values Present in Windchill'):
-                res.add(1)
+                output_individual_Sheet.add(1)
 
             elif(wss.cell(row=i, column=1).value=='Part is not Effective Windchill'):
-                res.add(2)
+                output_individual_Sheet.add(2)
             
             elif(wss.cell(row=i, column=8).value=='No Values Present in QAD'):
-                res.add(7)
+                output_individual_Sheet.add(7)
 
             else:
                 if(wss.cell(row=i, column=2).value!=wss.cell(row=i, column=8).value):
-                    res.add(8)
+                    output_individual_Sheet.add(8)
                 if(wss.cell(row=i, column=3).value!=wss.cell(row=i, column=9).value):
-                    res.add(9)
+                    output_individual_Sheet.add(9)
                 if(wss.cell(row=i, column=4).value!=wss.cell(row=i, column=10).value):
-                    res.add(3)
+                    output_individual_Sheet.add(3)
                 if(wss.cell(row=i, column=5).value!=wss.cell(row=i, column=11).value):
-                    res.add(4)
+                    output_individual_Sheet.add(4)
                 if(wss.cell(row=i, column=6).value!=wss.cell(row=i, column=12).value):
-                    res.add(5)
+                    output_individual_Sheet.add(5)
                 if(wss.cell(row=i, column=7).value!=wss.cell(row=i, column=13).value):
-                    res.add(6)
-        print(res)
-        return res
+                    output_individual_Sheet.add(6)
+        print(output_individual_Sheet)
+        return output_individual_Sheet
 
     
 
