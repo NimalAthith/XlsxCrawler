@@ -8,12 +8,36 @@ import os
 path = './source'
 
 
+
+diff = {
+    0:'No Difference in Windchill and QAD',
+    1:'No Values Present in Windchill',
+    2:'Part is not Effective Windchill',
+    3:'Difference in Effectivity Start',
+    4:'Difference in Effectivity End',
+    5:'Difference in Structure',
+    6:'Differnece in Quantity',
+    7:'No Values Present in QAD'
+    }
+
 #Secondary workbook loader
 def checkXlsx(book):
     wbs = load_workbook(filename="./source/" + book)
     wss = wbs.active
     row=wss['9']
     value = 0
+    last=9
+    
+    while(1):
+        if (wss.cell(row=i, column=1).value == None):
+            break
+        else:
+            last+= 1
+    if(last == 9):
+        return 0
+    else:
+        if(wss.cell(row=last, column=2).value=='No Values Present in Windchill'):
+
     for x in row:
         print(x.value)
         if x.value is None:
@@ -32,11 +56,11 @@ def checkXlsx(book):
         else :
             continue
     
-    
+
 
     return value
 
-
+    
 
 def openFile(keyword):
 #save files as list
